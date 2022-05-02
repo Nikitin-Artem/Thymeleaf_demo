@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">>
 <head>
     <meta charset="UTF-8">
     <title>Employee Directory</title>
@@ -23,10 +25,24 @@
     <h3>Employee Directory</h3>
     <hr>
 
-    <!--    Add a button    -->
-    <a th:href="@{/employees/showFormForAdd}" class="btn btn-primary btn-sm mb-3"> <!-- Bootstrap CSS -->
-        Add Employee
-    </a>
+    <div>
+        User: <span sec:authentication="name"></span>
+        <br>
+        Role(s): <span sec:authentication="principal.authorities"></span>
+        <br><br>
+    </div>
+
+    <!--    Add button and searching by name    -->
+    <form th:action="@{/employees/search}" class="form-inline">
+        <a th:href="@{/employees/showFormForAdd}"
+           class="btn btn-primary btn-sm mr-5 mb-3">
+            Add Employee
+        </a>
+
+        <input class="form-control  ml-5 mr-sm-2 mb-3" type="search" name="employeeName" placeholder="Search by name"/>
+
+        <button class="btn btn-success mb-3" type="submit">Search</button>
+    </form>
 
     <table class="table table-bordered table-striped"> <!-- Bootstrap CSS -->
         <thead class="thead-dark"> <!-- Bootstrap CSS -->
@@ -44,7 +60,7 @@
             <td th:text="${tempEmployee.lastName}"/>
             <td th:text="${tempEmployee.email}"/>
 
-            <!--    Add update button/link  -->
+            <!--    Add update and delete button/link  -->
             <td>
                 <a th:href="@{/employees/showFormForUpdate(employeeId=${tempEmployee.id})}"
                    class="btn btn-info btn-sm"> <!-- Bootstrap CSS -->
@@ -60,6 +76,14 @@
         </tr>
         </tbody>
     </table>
+
+    <!-- Add a logout button -->
+    <form action="#" th:action="@{/logout}"
+          method="POST">
+
+        <input type="submit" value="Logout" class="btn btn-outline-primary mt-2"/>
+
+    </form>
 </div>
 </body>
 </html>
