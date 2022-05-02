@@ -42,6 +42,18 @@
             <version>2.6.7</version>
         </dependency>
 
+        <!--    ADD SUPPORT FOR SPRING SECURITY         -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!--    Add the Thymeleaf pom entries for Spring Security   -->
+        <dependency>
+            <groupId>org.thymeleaf.extras</groupId>
+            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
+        </dependency>
+
         <!--    Hibernate + JPA    -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

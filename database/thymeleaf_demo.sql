@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS spring_boot_rest_jpa;
-USE spring_boot_rest_jpa;
+CREATE DATABASE  IF NOT EXISTS thymeleaf_demo;
+USE thymeleaf_demo;
 
 --
 -- Table structure for table `customer`
